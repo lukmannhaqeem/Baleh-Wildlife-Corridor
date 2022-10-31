@@ -1,4 +1,8 @@
 ###LOAD DATA
+###LOAD DATA
+###LOAD DATA
+###LOAD DATA
+###LOAD DATA
 #load sampling site information
 st <- read.csv(file.choose())
 #check for correlation between covariates

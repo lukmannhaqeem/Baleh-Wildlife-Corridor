@@ -1,5 +1,4 @@
-station,brsoX_m,brsoY_m,setup_date,retrieval_date,problem1_from,problem1_to,timeshift,sign
-station1,158565,142155,24-Feb-22,23-May-22,23-Apr-22,-,0:0:0 0:0:0,+
-station2,160725,137565,22-Feb-22,21-May-22,-,-,0:0:0 0:0:0,+
-station3,160605,139035,21-Feb-22,21-May-22,-,-,0:0:0 0:0:0,+
-,,,,,,,,
+station,brsoX_m,brsoY_m,setup_date,retrieval_date,Problem1_from,Problem1_to,timeshift,sign
+station1,158565,142155,24/02/2022,23/05/2022,23/04/2022,27/04/2022,0:0:0 0:0:0,+
+station2,160725,137565,22/02/2022,21/05/2022,,,0:0:0 0:0:0,+
+station3,160605,139035,21/02/2022,21/05/2022,,,0:0:0 0:0:0,+

@@ -10,7 +10,7 @@ citation("camtrapR")
 ##########1. ORGANISING RAW CAMERA TRAP IMAGES IN camtrapR
 
 ##1.1 Load camera trap station information
-camtrap <- read.csv("camtrap2.csv")                      
+camtrap <- read.csv("camtrap.csv")                      
 camtrap[is.na(camtrap)] <- ""
 str(camtrap)
 

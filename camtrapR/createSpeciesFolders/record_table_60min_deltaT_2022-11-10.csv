@@ -1,0 +1,14 @@
+"","station","Species","DateTimeOriginal","Date","Time","delta.time.secs","delta.time.mins","delta.time.hours","delta.time.days","Directory","FileName","n_images"
+"1","station1","Sunbear",2022-03-02 07:00:32,2022-03-02,"07:00:32",0,0,0,0,"camtrapR/createSpeciesFolders/station1/Sunbear","station1__2022-03-02__07-00-32(1).JPG",10
+"2","station2","Banded Civet",2022-05-03 20:09:08,2022-05-03,"20:09:08",0,0,0,0,"camtrapR/createSpeciesFolders/station2/Banded Civet","station2__2022-05-03__20-09-08(1).JPG",2
+"3","station2","Thick-spined Porcupine",2022-04-15 01:48:44,2022-04-15,"01:48:44",0,0,0,0,"camtrapR/createSpeciesFolders/station2/Thick-spined Porcupine","station2__2022-04-15__01-48-44(1).JPG",10
+"4","station3","Banded Civet",2022-03-03 05:08:21,2022-03-03,"05:08:21",0,0,0,0,"camtrapR/createSpeciesFolders/station3/Banded Civet","station3__2022-03-03__05-08-21(1).JPG",6
+"5","station3","Banded Civet",2022-03-10 04:00:35,2022-03-10,"04:00:35",600734,10012.2,166.9,7,"camtrapR/createSpeciesFolders/station3/Banded Civet","station3__2022-03-10__04-00-35(1).JPG",6
+"6","station3","Banded Civet",2022-04-06 04:26:04,2022-04-06,"04:26:04",2334329,38905.5,648.4,27,"camtrapR/createSpeciesFolders/station3/Banded Civet","station3__2022-04-06__04-26-04(1).JPG",3
+"7","station3","Great Argus Pheasant",2022-04-16 06:48:21,2022-04-16,"06:48:21",0,0,0,0,"camtrapR/createSpeciesFolders/station3/Great Argus Pheasant","station3__2022-04-16__06-48-21(1).JPG",6
+"8","station3","Great Argus Pheasant",2022-04-20 07:01:51,2022-04-20,"07:01:51",346410,5773.5,96.2,4,"camtrapR/createSpeciesFolders/station3/Great Argus Pheasant","station3__2022-04-20__07-01-51(1).JPG",9
+"9","station3","Great Argus Pheasant",2022-04-20 08:23:04,2022-04-20,"08:23:04",4873,81.2,1.4,0.1,"camtrapR/createSpeciesFolders/station3/Great Argus Pheasant","station3__2022-04-20__08-23-04(1).JPG",15
+"10","station3","Great Argus Pheasant",2022-05-06 07:30:48,2022-05-06,"07:30:48",1379264,22987.7,383.1,16,"camtrapR/createSpeciesFolders/station3/Great Argus Pheasant","station3__2022-05-06__07-30-48(1).JPG",9
+"11","station3","Leopard Cat",2022-04-19 10:03:37,2022-04-19,"10:03:37",0,0,0,0,"camtrapR/createSpeciesFolders/station3/Leopard Cat","station3__2022-04-19__10-03-37(1).JPG",7
+"12","station3","Leopard Cat",2022-05-14 16:17:48,2022-05-14,"16:17:48",2182451,36374.2,606.2,25.3,"camtrapR/createSpeciesFolders/station3/Leopard Cat","station3__2022-05-14__16-17-48(1).JPG",3
+"13","station3","Mongoose sp",2022-04-16 07:01:07,2022-04-16,"07:01:07",0,0,0,0,"camtrapR/createSpeciesFolders/station3/Mongoose sp","station3__2022-04-16__07-01-07(1).JPG",6

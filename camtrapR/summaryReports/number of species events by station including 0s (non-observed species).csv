@@ -1,19 +1,22 @@
 "","station","Species","n_events"
-"1","station1","Banded Civet",0
+"1","station1","Banded Palm Civet",0
 "2","station1","Great Argus Pheasant",0
 "3","station1","Leopard Cat",0
 "4","station1","Mongoose sp",0
 "5","station1","Sunbear",1
 "6","station1","Thick-spined Porcupine",0
-"7","station2","Banded Civet",1
-"8","station2","Great Argus Pheasant",0
-"9","station2","Leopard Cat",0
-"10","station2","Mongoose sp",0
-"11","station2","Sunbear",0
-"12","station2","Thick-spined Porcupine",1
-"13","station3","Banded Civet",3
-"14","station3","Great Argus Pheasant",4
-"15","station3","Leopard Cat",2
-"16","station3","Mongoose sp",1
-"17","station3","Sunbear",0
-"18","station3","Thick-spined Porcupine",0
+"7","station1","Yellow-throated Marten",0
+"8","station2","Banded Palm Civet",1
+"9","station2","Great Argus Pheasant",0
+"10","station2","Leopard Cat",0
+"11","station2","Mongoose sp",0
+"12","station2","Sunbear",0
+"13","station2","Thick-spined Porcupine",1
+"14","station2","Yellow-throated Marten",0
+"15","station3","Banded Palm Civet",3
+"16","station3","Great Argus Pheasant",4
+"17","station3","Leopard Cat",1
+"18","station3","Mongoose sp",1
+"19","station3","Sunbear",0
+"20","station3","Thick-spined Porcupine",0
+"21","station3","Yellow-throated Marten",1

@@ -32,7 +32,7 @@ timeshift_run <- timeShiftImages(inDir                = wd_images_raw,
 
 ##1.5 Renaming images
 #Destination for renamed images to be copied to
-wd_images_renamed <- file.path("EDA", "Renamed")       
+wd_images_renamed <- file.path("camtrapR", "renamed")       
 #Apply renaming of files with format = StationID__Date__Time(X).JPG
 # ---> ONLY RUN THIS WHEN EXIFTOOL IS AVAILABLE
 if (Sys.which("exiftool") != ""){        
@@ -54,7 +54,7 @@ head(renaming.table2)
 ##########2. IDENTIFYING SPECIES AND INDIVIDUALS
 
 ##2.1 Species identification via drag & drop of images
-wd_createSpeciesFolders <- file.path("EDA", "createSpeciesFolders")
+wd_createSpeciesFolders <- file.path("camtrapR", "createSpeciesFolders")
 #create the station directories
 StationFolderCreate <- createStationFolders (inDir       = wd_createSpeciesFolders,
                                              stations    = as.character(camtrap$station), 
@@ -88,7 +88,7 @@ SpecFolderCreate2 <- createSpeciesFolders (inDir               = wd_createSpecie
  
 ##3.1 Tabulating species records
 #find the directory with sample images contained in the package
-wd_images_ID <- file.path("EDA", "createSpeciesFolders")
+wd_images_ID <- file.path("camtrapR", "createSpeciesFolders")
 
 ##3.2 See how many independent observations (images) we have
 length(list.files(wd_images_ID, pattern 	    = "JPG", recursive = TRUE))
@@ -97,7 +97,7 @@ rec_table <- recordTable(inDir                	= wd_images_ID,
 						 minDeltaTime           = 60,
 						 stationCol             = "station",
 						 writecsv 		    	= TRUE,
-						 outDir 		    	= file.path("EDA", "createSpeciesFolders"),
+						 outDir 		    	= file.path("camtrapR", "createSpeciesFolders"),
 						 camerasIndependent	    = FALSE,
 						 deltaTimeComparedTo    = "lastIndependentRecord",
 						 exclude                = "NO_ID",
@@ -139,6 +139,8 @@ camop_no_problem <- cameraOperation(CTtable      = camtrap,
                                     dateFormat   = "%d/%m/%Y")
 
 ##3.6 Make detection history (without trapping effort)
+dir.create(paste(getwd(), "/camtrapR/detectionHistories", sep = ""))
+
 for(i in 1:length(species)){
 	detHist <- detectionHistory(recordTable          = rec_table,						 
 								camOp                = camop_no_problem,
@@ -149,10 +151,9 @@ for(i in 1:length(species)){
 								occasionLength       = 1,
 								day1                 = "station",
 								includeEffort        = FALSE,
-								timeZone             = "Asia/Kuala_Lumpur"
-	)
+								timeZone             = "Asia/Kuala_Lumpur")
 	dh <- (detHist$detection_history)
-	write.csv(dh, paste(getwd(), "/EDA/", "dh_", species[i], ".csv", sep = "")) 
+	write.csv(dh, paste(getwd(), "/camtrapR/detectionHistories/", "dh_", species[i], ".csv", sep = "")) 
 }
  
  
@@ -162,6 +163,8 @@ for(i in 1:length(species)){
 ##########4. EXPLORATORY DATA ANALYSIS AND VISUALISATION 
 
 ##4.1 Species presence maps
+dir.create(paste(getwd(), "/camtrapR/EDA", sep = ""))
+
 #create a map of the number of observed species
 Mapstest <- detectionMaps(CTtable           = camtrap,
                           recordTable       = rec_table,
@@ -170,7 +173,7 @@ Mapstest <- detectionMaps(CTtable           = camtrap,
                           stationCol        = "station",
                           speciesCol        = "Species",
                           writePNG          = TRUE,
-						  plotDirectory	  	= paste(getwd(), "/EDA/", sep = ""),
+						  plotDirectory	  	= paste(getwd(), "/camtrapR/EDA/", sep = ""),
                           plotR             = TRUE,
                           printLabels       = TRUE,
                           richnessPlot      = TRUE,
@@ -181,7 +184,7 @@ Mapstest <- detectionMaps(CTtable           = camtrap,
 activityDensity(recordTable 		= rec_table,
                 allSpecies 			= TRUE,
                 writePNG    		= TRUE,
-				plotDirectory		= paste(getwd(), "/EDA/", sep = ""),
+				plotDirectory		= paste(getwd(), "/camtrapR/EDA/", sep = ""),
                 plotR       		= TRUE,
                 add.rug     		= TRUE)
 
@@ -214,7 +217,7 @@ activityOverlap (recordTable   = rec_table,
                  speciesA      = speciesA_for_activity,
                  speciesB      = speciesB_for_activity,
                  writePNG      = TRUE,
-				 plotDirectory = paste(getwd(), "/EDA/", sep = ""),
+				 plotDirectory = paste(getwd(), "/camtrapR/EDA/", sep = ""),
                  plotR         = TRUE,
                  createDir     = FALSE,
                  pngMaxPix     = 1000,
@@ -224,6 +227,8 @@ activityOverlap (recordTable   = rec_table,
 				 main 	       = paste(speciesA_for_activity, " & ", speciesB_for_activity, sep = ""))
 				
 ##4.3 Survey summary report
+dir.create(paste(getwd(), "/camtrapR/summaryReports", sep = ""))
+
 #without camera problems
 reportTest <- surveyReport (recordTable          = rec_table,
                             CTtable              = camtrap,
@@ -236,15 +241,15 @@ reportTest <- surveyReport (recordTable          = rec_table,
                             recordDateTimeFormat = "%Y-%m-%d %H:%M:%S")
 length(reportTest)  
 # camera trap operation times and image date ranges
-write.csv(file = paste(getwd(), "/EDA/", "camera trap operation times and image date ranges.csv", sep = ""), reportTest[[1]])
+write.csv(file = paste(getwd(), "/camtrapR/summaryReports/", "camera trap operation times and image date ranges.csv", sep = ""), reportTest[[1]])
 # number of species by station
-write.csv(file = paste(getwd(), "/EDA/", "number of species by station.csv", sep = ""), reportTest[[2]])
+write.csv(file = paste(getwd(), "/camtrapR/summaryReports/", "number of species by station.csv", sep = ""), reportTest[[2]])
 # number of events and number of stations by species
-write.csv(file = paste(getwd(), "/EDA/", "number of events and number of stations by species.csv", sep = ""), reportTest[[3]])
+write.csv(file = paste(getwd(), "/camtrapR/summaryReports/", "number of events and number of stations by species.csv", sep = ""), reportTest[[3]])
 # number of species events by station
-write.csv(file = paste(getwd(), "/EDA/", "number of species events by station.csv", sep = ""), reportTest[[4]])
+write.csv(file = paste(getwd(), "/camtrapR/summaryReports/", "number of species events by station.csv", sep = ""), reportTest[[4]])
 # number of species events by station including 0s (non-observed species)
-write.csv(file = paste(getwd(), "/EDA/", "number of species events by station including 0s (non-observed species).csv", sep = ""), reportTest[[5]])
+write.csv(file = paste(getwd(), "/camtrapR/summaryReports/", "number of species events by station including 0s (non-observed species).csv", sep = ""), reportTest[[5]])
 
 #with camera problems
 reportTest_problem <- surveyReport (recordTable          = rec_table,
@@ -259,14 +264,14 @@ reportTest_problem <- surveyReport (recordTable          = rec_table,
                                     CTHasProblems        = TRUE)
 length(reportTest_problem)
 # camera trap operation times and image date ranges
-write.csv(file = paste(getwd(), "/EDA/", "camera trap operation times and image date ranges_with camera problems.csv", sep = ""), reportTest_problem[[1]])
+write.csv(file = paste(getwd(), "/camtrapR/summaryReports/", "camera trap operation times and image date ranges_with camera problems.csv", sep = ""), reportTest_problem[[1]])
 # number of species by station
-write.csv(file = paste(getwd(), "/EDA/", "number of species by station_with camera problems.csv", sep = ""), reportTest_problem[[2]])
+write.csv(file = paste(getwd(), "/camtrapR/summaryReports/", "number of species by station_with camera problems.csv", sep = ""), reportTest_problem[[2]])
 # number of events and number of stations by species
-write.csv(file = paste(getwd(), "/EDA/", "number of events and number of stations by species_with camera problems.csv", sep = ""), reportTest_problem[[3]])
+write.csv(file = paste(getwd(), "/camtrapR/summaryReports/", "number of events and number of stations by species_with camera problems.csv", sep = ""), reportTest_problem[[3]])
 # number of species events by station
-write.csv(file = paste(getwd(), "/EDA/", "number of species events by station_with camera problems.csv", sep = ""), reportTest_problem[[4]])
+write.csv(file = paste(getwd(), "/camtrapR/summaryReports/", "number of species events by station_with camera problems.csv", sep = ""), reportTest_problem[[4]])
 # number of species events by station including 0s (non-observed species)
-write.csv(file = paste(getwd(), "/EDA/", "number of species events by station including 0s (non-observed species)_with camera problems.csv", sep = ""), reportTest_problem[[5]])
+write.csv(file = paste(getwd(), "/camtrapR/summaryReports/", "number of species events by station including 0s (non-observed species)_with camera problems.csv", sep = ""), reportTest_problem[[5]])
 
 	

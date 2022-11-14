@@ -61,7 +61,7 @@ StationFolderCreate <- createStationFolders (inDir       = wd_createSpeciesFolde
 											 createinDir = TRUE)
 
 ##2.2 Species names for which we want to create subdirectories
-species <- c("Banded Civet", "Great Argus Pheasant", "Leopard Cat",
+species <- c("Banded Palm Civet", "Great Argus Pheasant", "Leopard Cat",
 			 "Mongoose sp", "Sunbear", "Thick-spined Porcupine")
 
 ##2.3 Create species directories (folders)

@@ -19,7 +19,7 @@ TimeShiftTable <- camtrap[,c(1,8,9)]
 head(TimeShiftTable)
 
 ##1.3 Copy sample images to another location
-wd_images_raw <- paste(getwd(), "/named", sep = "")
+wd_images_raw <- paste(getwd(), "/raw", sep = "")
 
 ##1.4 Apply time shift to images
 timeshift_run <- timeShiftImages(inDir                = wd_images_raw,
@@ -32,7 +32,7 @@ timeshift_run <- timeShiftImages(inDir                = wd_images_raw,
 
 ##1.5 Renaming images
 #Destination for renamed images to be copied to
-wd_images_renamed <- file.path("camtrapR", "renamed")       
+wd_images_renamed <- paste(getwd(), "/camtrapR/renamed", sep = "")       
 #Apply renaming of files with format = StationID__Date__Time(X).JPG
 # ---> ONLY RUN THIS WHEN EXIFTOOL IS AVAILABLE
 if (Sys.which("exiftool") != ""){        
@@ -105,6 +105,8 @@ rec_table <- recordTable(inDir                	= wd_images_ID,
 						 removeDuplicateRecords = TRUE)
 #check if there is any more duplicates (output should be [1] 0, meaning no duplicates)
 anyDuplicated(rec_table[, c("station", "Species", "DateTimeOriginal")])   
+#rec_table$count <- as.numeric(gsub(",", "", substr(rec_table$HierarchicalSubject, 7, 8)))
+
 
 ##3.3 Load the camera trap station table
 camop_problem <- cameraOperation(CTtable      = camtrap,								
@@ -191,7 +193,7 @@ activityDensity(recordTable 		= rec_table,
 
 #single species activity plots
 #define species of interest
-speciesA_activity <- "Banded Civet"
+speciesA_activity <- "Banded Palm Civet"
 
 #...visualise as density plot
 activityDensity(recordTable = rec_table,
@@ -209,7 +211,7 @@ activityRadial(recordTable  = rec_table,
 
 #two species activity overlap plot
 #define species of interest
-speciesA_for_activity <- "Banded Civet"    
+speciesA_for_activity <- "Banded Palm Civet"    
 speciesB_for_activity <- "Great Argus Pheasant"    
 
 # create activity overlap plot
@@ -273,5 +275,7 @@ write.csv(file = paste(getwd(), "/camtrapR/summaryReports/", "number of events a
 write.csv(file = paste(getwd(), "/camtrapR/summaryReports/", "number of species events by station_with camera problems.csv", sep = ""), reportTest_problem[[4]])
 # number of species events by station including 0s (non-observed species)
 write.csv(file = paste(getwd(), "/camtrapR/summaryReports/", "number of species events by station including 0s (non-observed species)_with camera problems.csv", sep = ""), reportTest_problem[[5]])
+
+
 
 	

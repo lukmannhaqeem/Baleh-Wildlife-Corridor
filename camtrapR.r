@@ -3,10 +3,6 @@
 library(camtrapR)
 citation("camtrapR")
 
-
-
-
-
 ##########1. ORGANISING RAW CAMERA TRAP IMAGES IN camtrapR
 
 ##1.1 Load camera trap station information
@@ -19,7 +15,7 @@ TimeShiftTable <- camtrap[,c(1,8,9)]
 head(TimeShiftTable)
 
 ##1.3 Copy sample images to another location
-wd_images_raw <- paste(getwd(), "/named", sep = "")
+wd_images_raw <- paste(getwd(), "/raw", sep = "")
 
 ##1.4 Apply time shift to images
 timeshift_run <- timeShiftImages(inDir                = wd_images_raw,
@@ -184,14 +180,14 @@ Mapstest <- detectionMaps(CTtable           = camtrap,
 activityDensity(recordTable 		= rec_table,
                 allSpecies 			= TRUE,
                 writePNG    		= TRUE,
-				plotDirectory		= paste(getwd(), "/camtrapR/EDA/", sep = ""),
+				plotDirectory		= paste(getwd(), "/camtrapR/EDA", sep = ""),
                 plotR       		= TRUE,
                 add.rug     		= TRUE)
 
 
 #single species activity plots
 #define species of interest
-speciesA_activity <- "Banded Civet"
+speciesA_activity <- "Banded Palm Civet"
 
 #...visualise as density plot
 activityDensity(recordTable = rec_table,
@@ -209,7 +205,7 @@ activityRadial(recordTable  = rec_table,
 
 #two species activity overlap plot
 #define species of interest
-speciesA_for_activity <- "Banded Civet"    
+speciesA_for_activity <- "Banded Palm Civet"    
 speciesB_for_activity <- "Great Argus Pheasant"    
 
 # create activity overlap plot
@@ -217,7 +213,7 @@ activityOverlap (recordTable   = rec_table,
                  speciesA      = speciesA_for_activity,
                  speciesB      = speciesB_for_activity,
                  writePNG      = TRUE,
-				 plotDirectory = paste(getwd(), "/camtrapR/EDA/", sep = ""),
+				 plotDirectory = paste(getwd(), "/camtrapR/EDA", sep = ""),
                  plotR         = TRUE,
                  createDir     = FALSE,
                  pngMaxPix     = 1000,
